@@ -1,0 +1,11 @@
+# Секрети та середовище
+.env
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Локальні нотатки сесій (system.md комітимо, чернетки — ні)
+.agents/*.local
+.agents/sessions/
