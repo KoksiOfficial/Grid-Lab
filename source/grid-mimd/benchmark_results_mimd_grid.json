@@ -19,51 +19,51 @@
   "runs": [
     {
       "workers": 1,
-      "time_s": 0.45658479999838164,
-      "trials_per_sec": 21901.736544964802,
+      "time_s": 0.45147930000530323,
+      "trials_per_sec": 22149.409729045245,
       "speedup": 1.0,
       "efficiency": 1.0,
       "amdahl_serial_fraction": null
     },
     {
       "workers": 2,
-      "time_s": 0.3734547999993083,
-      "trials_per_sec": 26777.002196834856,
-      "speedup": 1.222597219259807,
-      "efficiency": 0.6112986096299035,
-      "amdahl_serial_fraction": 0.6358617282074741
+      "time_s": 0.3639557999995304,
+      "trials_per_sec": 27475.86382745625,
+      "speedup": 1.240478376786098,
+      "efficiency": 0.620239188393049,
+      "amdahl_serial_fraction": 0.6122812274904088
     },
     {
       "workers": 4,
-      "time_s": 0.2679081000023871,
-      "trials_per_sec": 37326.232390550715,
-      "speedup": 1.7042590350732711,
-      "efficiency": 0.4260647587683178,
-      "amdahl_serial_fraction": 0.44902034993524875
+      "time_s": 0.2734794999996666,
+      "trials_per_sec": 36565.81206274032,
+      "speedup": 1.6508707234211473,
+      "efficiency": 0.4127176808552868,
+      "amdahl_serial_fraction": 0.47432126639827255
     },
     {
       "workers": 8,
-      "time_s": 0.33152330000302754,
-      "trials_per_sec": 30163.79240888552,
-      "speedup": 1.37723291242037,
-      "efficiency": 0.17215411405254624,
-      "amdahl_serial_fraction": 0.6869641114495586
+      "time_s": 0.2621391000066069,
+      "trials_per_sec": 38147.6857124632,
+      "speedup": 1.7222890442285193,
+      "efficiency": 0.2152861305285649,
+      "amdahl_serial_fraction": 0.5207115808056575
     },
     {
       "workers": 16,
-      "time_s": 0.41587170000275364,
-      "trials_per_sec": 24045.877610652,
-      "speedup": 1.0978982219645108,
-      "efficiency": 0.06861863887278193,
-      "amdahl_serial_fraction": 0.9048866570631411
+      "time_s": 0.36723199999687495,
+      "trials_per_sec": 27230.742419193037,
+      "speedup": 1.229411652604199,
+      "efficiency": 0.07683822828776243,
+      "amdahl_serial_fraction": 0.800957016911736
     },
     {
       "workers": 20,
-      "time_s": 0.4078856000051019,
-      "trials_per_sec": 24516.67820554322,
-      "speedup": 1.1193942615102632,
-      "efficiency": 0.05596971307551316,
-      "amdahl_serial_fraction": 0.887726626504909
+      "time_s": 0.4359896000023582,
+      "trials_per_sec": 22936.32692143554,
+      "speedup": 1.0355276823182509,
+      "efficiency": 0.051776384115912545,
+      "amdahl_serial_fraction": 0.963885504005766
     }
   ],
   "result": {

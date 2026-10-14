@@ -202,27 +202,23 @@ Trial послідовний:
 
 ### Прогони для звіту
 
-`N = 10 000`, `--shock weighted`, `--seed 42` (той самий сценарій `s = 83810` в усіх прогонах). Дві серії за `m`:
+`N = 10 000`, `--shock weighted`, `--seed 42` (той самий сценарій `s = 83810`), `m = 2.0` (default):
 
-| `k` | `m` | `--out` | Графік |
-| :--- | :--- | :--- | :--- |
-| 1 | 2.0 | `benchmark_results_mimd_grid.json` | `speedup.png` |
-| 2 | 2.0 | `benchmark_results_mimd_grid_k2.json` | `benchmark_results_mimd_grid_k2_speedup.png` |
-| 1 | 1.5 | `benchmark_results_mimd_grid_m1.5.json` | `benchmark_results_mimd_grid_m1.5_speedup.png` |
-| 2 | 1.5 | `benchmark_results_mimd_grid_k2_m1.5.json` | `benchmark_results_mimd_grid_k2_m1.5_speedup.png` |
+| `k` | `--out` | Графік |
+| :--- | :--- | :--- |
+| 1 | `benchmark_results_mimd_grid.json` | `speedup.png` |
+| 2 | `benchmark_results_mimd_grid_k2.json` | `benchmark_results_mimd_grid_k2_speedup.png` |
 
 ```bash
 cd my-grid-lab/source/grid-mimd
 python app.py --headless --trials 10000 --k 1
 python app.py --headless --trials 10000 --k 2 --out benchmark_results_mimd_grid_k2.json
-python app.py --headless --trials 10000 --k 1 --unrated-margin 1.5 --out benchmark_results_mimd_grid_m1.5.json
-python app.py --headless --trials 10000 --k 2 --unrated-margin 1.5 --out benchmark_results_mimd_grid_k2_m1.5.json
 ```
 
-У звіті:
+У звіті (`README.md`, розділ «Результати»):
 
-- `m = 2.0` — default; `m = 1.5` — стрес-режим. `m` — припущення замість відсутніх лімітів 147 ліній, не величина з датасету; `P(blackout)` від нього сильно залежить (§3).
-- Таблиця: `P(blackout)`, `cascade_fraction`, mean `dns_proxy` для 4 прогонів; top-5 ліній з прогонів `m = 1.5`.
+- `P(blackout)` для `k = 1` (і `k = 2`), throughput при 1 і `cpu_count` воркерах, speedup з коментарем, топ-3 ліній.
+- `m` — припущення замість відсутніх лімітів 147 ліній, не величина з датасету (§3). При `k = 1` блекаутів 0, тому топ-3 — з прогону `k = 2`.
 - Speedup: при `N = 10 000` один прогін триває ~0.5 с, тому старт `Pool` (spawn) займає помітну частку часу і обмежує speedup (~1.7× на 4 воркерах у прогоні v2). Це фіксується у звіті як накладні витрати.
 
 ---
@@ -244,7 +240,7 @@ python app.py --headless --trials 10000 --k 2 --unrated-margin 1.5 --out benchma
 
 Закриті:
 
-- Ємність ліній з `lr <= 0` — варіант B (§3); default `m = 2.0`, у звіті серії `m = 2.0` і `m = 1.5`, `N = 10 000` (§8).
+- Ємність ліній з `lr <= 0` — варіант B (§3); default `m = 2.0`; у звіті лише `m = 2.0`, `N = 10 000` (§8).
 - `my-grid-lab/app.py` — видалено (§1).
 - TRIP — одна найгірша лінія за крок.
 - Топологія — в `args` чанка.
