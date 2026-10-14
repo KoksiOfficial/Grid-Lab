@@ -9,3 +9,5 @@ __pycache__/
 # Локальні нотатки сесій (system.md комітимо, чернетки — ні)
 .agents/*.local
 .agents/sessions/
+
+/dataset

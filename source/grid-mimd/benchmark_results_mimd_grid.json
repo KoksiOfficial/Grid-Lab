@@ -1,0 +1,177 @@
+{
+  "params": {
+    "trials": 10000,
+    "k": 1,
+    "seed": 42,
+    "threshold": 0.05,
+    "shock_mode": "weighted",
+    "unrated_margin": 2.0,
+    "cpu_count": 20,
+    "max_steps": 186,
+    "trip_rule": "one worst overloaded line per step",
+    "shock_candidates": 185,
+    "n_unrated": 147,
+    "n_overloaded_initial": 0,
+    "topology_pickle_bytes": 9021,
+    "time_includes_pool_startup": true
+  },
+  "deterministic_across_workers": true,
+  "runs": [
+    {
+      "workers": 1,
+      "time_s": 0.45658479999838164,
+      "trials_per_sec": 21901.736544964802,
+      "speedup": 1.0,
+      "efficiency": 1.0,
+      "amdahl_serial_fraction": null
+    },
+    {
+      "workers": 2,
+      "time_s": 0.3734547999993083,
+      "trials_per_sec": 26777.002196834856,
+      "speedup": 1.222597219259807,
+      "efficiency": 0.6112986096299035,
+      "amdahl_serial_fraction": 0.6358617282074741
+    },
+    {
+      "workers": 4,
+      "time_s": 0.2679081000023871,
+      "trials_per_sec": 37326.232390550715,
+      "speedup": 1.7042590350732711,
+      "efficiency": 0.4260647587683178,
+      "amdahl_serial_fraction": 0.44902034993524875
+    },
+    {
+      "workers": 8,
+      "time_s": 0.33152330000302754,
+      "trials_per_sec": 30163.79240888552,
+      "speedup": 1.37723291242037,
+      "efficiency": 0.17215411405254624,
+      "amdahl_serial_fraction": 0.6869641114495586
+    },
+    {
+      "workers": 16,
+      "time_s": 0.41587170000275364,
+      "trials_per_sec": 24045.877610652,
+      "speedup": 1.0978982219645108,
+      "efficiency": 0.06861863887278193,
+      "amdahl_serial_fraction": 0.9048866570631411
+    },
+    {
+      "workers": 20,
+      "time_s": 0.4078856000051019,
+      "trials_per_sec": 24516.67820554322,
+      "speedup": 1.1193942615102632,
+      "efficiency": 0.05596971307551316,
+      "amdahl_serial_fraction": 0.887726626504909
+    }
+  ],
+  "result": {
+    "scenario": 83810,
+    "trials": 10000,
+    "k": 1,
+    "seed": 42,
+    "threshold": 0.05,
+    "shock_mode": "weighted",
+    "unrated_margin": 2.0,
+    "p_blackout": 0.0,
+    "mean_dns_proxy": 6.431682344513669e-05,
+    "cascade_fraction": 0.0,
+    "reference": {
+      "dns_MW": 0.0,
+      "output_features": 0.0
+    },
+    "top_lines": [
+      {
+        "branch": 0,
+        "from_bus": 1,
+        "to_bus": 2,
+        "in_shock": 58,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 1,
+        "from_bus": 1,
+        "to_bus": 3,
+        "in_shock": 68,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 2,
+        "from_bus": 2,
+        "to_bus": 12,
+        "in_shock": 63,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 3,
+        "from_bus": 3,
+        "to_bus": 5,
+        "in_shock": 65,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 4,
+        "from_bus": 3,
+        "to_bus": 12,
+        "in_shock": 65,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 5,
+        "from_bus": 4,
+        "to_bus": 5,
+        "in_shock": 20,
+        "shock_share_expected": 0.0019509652541511108,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 6,
+        "from_bus": 4,
+        "to_bus": 11,
+        "in_shock": 59,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 7,
+        "from_bus": 5,
+        "to_bus": 6,
+        "in_shock": 53,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 8,
+        "from_bus": 5,
+        "to_bus": 8,
+        "in_shock": 72,
+        "shock_share_expected": 0.007878903438739994,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 9,
+        "from_bus": 5,
+        "to_bus": 11,
+        "in_shock": 67,
+        "shock_share_expected": 0.006075911002578578,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      }
+    ]
+  }
+}
