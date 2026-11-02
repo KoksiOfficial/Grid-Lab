@@ -1,0 +1,134 @@
+{
+  "benchmark_suite": "ray_grid_power",
+  "compare_mode": false,
+  "deterministic_across_backends": null,
+  "runs": {
+    "architecture": "RAY_GRID_POOL",
+    "backend": "pool",
+    "scenario": 83810,
+    "k": 1,
+    "seed": 42,
+    "threshold": 0.05,
+    "shock_mode": "weighted",
+    "unrated_margin": 2.0,
+    "trials": 10000,
+    "chunks": 1,
+    "cpu_workers": 1,
+    "topology_bytes": 9021,
+    "topology_put_ms": null,
+    "time_includes_pool_startup": false,
+    "cluster": null,
+    "metrics": {
+      "total_execution_time_sec": 0.3834,
+      "throughput_trials_per_sec": 26080.2
+    },
+    "result": {
+      "scenario": 83810,
+      "trials": 10000,
+      "k": 1,
+      "seed": 42,
+      "threshold": 0.05,
+      "shock_mode": "weighted",
+      "unrated_margin": 2.0,
+      "p_blackout": 0.0,
+      "mean_dns_proxy": 6.431682344513666e-05,
+      "cascade_fraction": 0.0,
+      "reference": {
+        "dns_MW": 0.0,
+        "output_features": 0.0
+      },
+      "top_lines": [
+        {
+          "branch": 0,
+          "from_bus": 1,
+          "to_bus": 2,
+          "in_shock": 58,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 1,
+          "from_bus": 1,
+          "to_bus": 3,
+          "in_shock": 68,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 2,
+          "from_bus": 2,
+          "to_bus": 12,
+          "in_shock": 63,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 3,
+          "from_bus": 3,
+          "to_bus": 5,
+          "in_shock": 65,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 4,
+          "from_bus": 3,
+          "to_bus": 12,
+          "in_shock": 65,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 5,
+          "from_bus": 4,
+          "to_bus": 5,
+          "in_shock": 20,
+          "shock_share_expected": 0.0019509652541511108,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 6,
+          "from_bus": 4,
+          "to_bus": 11,
+          "in_shock": 59,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 7,
+          "from_bus": 5,
+          "to_bus": 6,
+          "in_shock": 53,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 8,
+          "from_bus": 5,
+          "to_bus": 8,
+          "in_shock": 72,
+          "shock_share_expected": 0.007878903438739994,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        },
+        {
+          "branch": 9,
+          "from_bus": 5,
+          "to_bus": 11,
+          "in_shock": 67,
+          "shock_share_expected": 0.006075911002578578,
+          "p_blackout_given_shock": 0.0,
+          "cascade_trips": 0
+        }
+      ]
+    }
+  }
+}

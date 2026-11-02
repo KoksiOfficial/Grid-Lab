@@ -1,0 +1,5 @@
+numpy>=1.24
+ray[default]>=2.9
+
+# Head only, already required by source/grid-mimd: scipy, h5py.
+# The worker imports engine.py (numpy) and does not open the .mat files.
