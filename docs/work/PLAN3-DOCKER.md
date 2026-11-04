@@ -399,7 +399,7 @@ docker exec ieee118-sim-service sh -c "echo cpu.max; cat /sys/fs/cgroup/cpu.max;
 Основний сервіс не чіпати. Окремий контейнер без `restart` і без публікації порта. Томи ті самі, інакше процес помре з кодом 1 на відсутньому файлі, і це не OOM.
 
 ```powershell
-docker run --rm --memory=64m --name ieee118-oom `
+docker run --rm --memory=64m --name ieee118-oom -p 8081:8080 `
   -e DATA_DIR=/data -e SCRIPT_DIR=/scripts -e SIM_WORKERS=4 `
   -v "${PWD}\..\..\dataset\dataset_cascades:/data:ro" `
   -v "${PWD}\..\..\..\cloud_grid\source\dataset_scripts:/scripts:ro" `

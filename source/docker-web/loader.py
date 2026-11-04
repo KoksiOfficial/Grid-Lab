@@ -16,9 +16,16 @@ import numpy as np
 from engine import N_BRANCHES, N_BUSES, prepare_topology
 
 GRID_DIR = Path(__file__).resolve().parent
-LAB_DIR = GRID_DIR.parents[1]
-DEFAULT_DATA = LAB_DIR / "dataset" / "dataset_cascades"
-DEFAULT_SCRIPTS = LAB_DIR.parent / "cloud_grid" / "source" / "dataset_scripts"
+# Host layout is my-grid-lab/source/docker-web, so parents[1] is the lab root.
+# In the image the file is /app/loader.py and that index does not exist.
+if len(GRID_DIR.parents) > 1:
+    LAB_DIR = GRID_DIR.parents[1]
+    DEFAULT_DATA = LAB_DIR / "dataset" / "dataset_cascades"
+    DEFAULT_SCRIPTS = LAB_DIR.parent / "cloud_grid" / "source" / "dataset_scripts"
+else:
+    LAB_DIR = GRID_DIR
+    DEFAULT_DATA = Path("/data")
+    DEFAULT_SCRIPTS = Path("/scripts")
 
 
 def resolve_data_dir() -> Path:
