@@ -1,0 +1,153 @@
+{
+  "params": {
+    "trials": 10000,
+    "k": 1,
+    "seed": 42,
+    "threshold": 0.05,
+    "shock_mode": "weighted",
+    "unrated_margin": 2.0,
+    "cpu_count": 20,
+    "max_steps": 186,
+    "trip_rule": "one worst overloaded line per step",
+    "shock_candidates": 185,
+    "n_unrated": 147,
+    "n_overloaded_initial": 0,
+    "topology_pickle_bytes": 9021,
+    "time_includes_pool_startup": false
+  },
+  "deterministic_across_workers": true,
+  "runs": [
+    {
+      "workers": 1,
+      "time_s": 0.40240652199963733,
+      "trials_per_sec": 24850.49186158323,
+      "speedup": 1.0,
+      "efficiency": 1.0,
+      "amdahl_serial_fraction": null
+    },
+    {
+      "workers": 2,
+      "time_s": 0.19457624300002863,
+      "trials_per_sec": 51393.73566791774,
+      "speedup": 2.0681174422695485,
+      "efficiency": 1.0340587211347743,
+      "amdahl_serial_fraction": -0.03293693137406961
+    },
+    {
+      "workers": 4,
+      "time_s": 0.10711254600028042,
+      "trials_per_sec": 93359.74517843896,
+      "speedup": 3.756857035202803,
+      "efficiency": 0.9392142588007008,
+      "amdahl_serial_fraction": 0.02157326035379037
+    }
+  ],
+  "result": {
+    "scenario": 83810,
+    "trials": 10000,
+    "k": 1,
+    "seed": 42,
+    "threshold": 0.05,
+    "shock_mode": "weighted",
+    "unrated_margin": 2.0,
+    "p_blackout": 0.0,
+    "mean_dns_proxy": 6.431682344513677e-05,
+    "cascade_fraction": 0.0,
+    "reference": {
+      "dns_MW": 0.0,
+      "output_features": 0.0
+    },
+    "top_lines": [
+      {
+        "branch": 0,
+        "from_bus": 1,
+        "to_bus": 2,
+        "in_shock": 58,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 1,
+        "from_bus": 1,
+        "to_bus": 3,
+        "in_shock": 68,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 2,
+        "from_bus": 2,
+        "to_bus": 12,
+        "in_shock": 63,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 3,
+        "from_bus": 3,
+        "to_bus": 5,
+        "in_shock": 65,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 4,
+        "from_bus": 3,
+        "to_bus": 12,
+        "in_shock": 65,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 5,
+        "from_bus": 4,
+        "to_bus": 5,
+        "in_shock": 20,
+        "shock_share_expected": 0.0019509652541511101,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 6,
+        "from_bus": 4,
+        "to_bus": 11,
+        "in_shock": 59,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 7,
+        "from_bus": 5,
+        "to_bus": 6,
+        "in_shock": 53,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 8,
+        "from_bus": 5,
+        "to_bus": 8,
+        "in_shock": 72,
+        "shock_share_expected": 0.00787890343873999,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      },
+      {
+        "branch": 9,
+        "from_bus": 5,
+        "to_bus": 11,
+        "in_shock": 67,
+        "shock_share_expected": 0.006075911002578576,
+        "p_blackout_given_shock": 0.0,
+        "cascade_trips": 0
+      }
+    ]
+  }
+}
