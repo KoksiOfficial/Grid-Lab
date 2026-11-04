@@ -1,7 +1,7 @@
 # docker-web — IEEE-118 cascade Monte Carlo, веб
 
 Локальний веб-сервер того самого каскаду, що в `source/grid-mimd/`.
-Образ і Compose — наступний етап. План: `docs/work/PLAN3-WEB.md`.
+Той самий процес пакується в образ. План вебу: `docs/work/PLAN3-WEB.md`. План образу: `docs/work/PLAN3-DOCER.md`.
 
 | Файл | Роль |
 | :--- | :--- |
@@ -9,6 +9,9 @@
 | `loader.py` | Читає один сценарій `.mat` і рахує координати вузлів |
 | `app.py` | HTTP, дашборд, спільний `Pool`, CLI `--headless` |
 | `requirements.txt` | `numpy`, `scipy`, `h5py`, `networkx`, `matplotlib` |
+| `Dockerfile` | Образ `python:3.11-slim`, користувач `appuser` (uid 10001) |
+| `docker-compose.yml` | Порт `8080:8080`, квоти, томи датасету, мережа `grid-net` |
+| `.dockerignore` | Відсікає `.venv` і локальні звіти з контексту збірки |
 
 `matplotlib` потрібен лише `--headless` (графік speedup).
 
@@ -44,6 +47,37 @@ python app.py
 Кнопки дашборда пишуть параметри через `POST /api/reset`. Повзунок сам по собі хвилю не змінює.
 
 На `s = 83810` і `k = 1` каскадів немає (етап 1). Веб-сесія тому стартує з `k = 2`, щоб на графі з’являвся другий колір.
+
+## Compose
+
+Образ не містить `.mat`. `DATA_DIR=/data` і `SCRIPT_DIR=/scripts` — каталоги всередині контейнера. Compose монтує туди лише для читання `my-grid-lab/dataset/dataset_cascades` і `cloud_grid/source/dataset_scripts`.
+
+Жорсткі ліміти: `cpus: "2.00"` (200 мс на кожні 100 мс), `memory: 512M`. Порт хоста `8080` іде в `net` namespace контейнера. Мережа `grid-net`, `driver: bridge`. У процесі `SIM_WORKERS=4`. Користувач — `appuser`. `ENTRYPOINT` у exec-формі, тож `docker stop` доставляє `SIGTERM` процесу PID 1.
+
+Перед `up` зупинити локальний `python app.py`, якщо він уже слухає 8080.
+
+```powershell
+cd my-grid-lab\source\docker-web
+docker compose up --build -d
+docker compose ps
+docker compose logs ieee118-sim
+```
+
+Дашборд той самий: [http://localhost:8080](http://localhost:8080). У PowerShell проби йдуть через `curl.exe`.
+
+```powershell
+curl.exe http://localhost:8080/api/health
+curl.exe http://localhost:8080/api/metrics
+```
+
+Зупинка:
+
+```powershell
+docker stop ieee118-sim-service
+docker compose down
+```
+
+Повний сценарій перевірки, OOM і бенчмарк — у `docs/work/PLAN3-DOCER.md`, §7.
 
 | Змінна | За замовчуванням | Прапорець CLI |
 | :--- | :--- | :--- |

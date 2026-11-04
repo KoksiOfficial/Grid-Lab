@@ -1,0 +1,6 @@
+.venv
+__pycache__
+*.pyc
+bench-out
+benchmark_results*.json
+speedup*.png

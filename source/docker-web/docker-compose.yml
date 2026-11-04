@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  ieee118-sim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-grid-lab/ieee118-sim:stage3
+    container_name: ieee118-sim-service
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      SIM_WORKERS: "4"
+      SIM_K: "2"
+      SIM_SCENARIO: "83810"
+      SIM_SEED: "42"
+      DATA_DIR: /data
+      SCRIPT_DIR: /scripts
+    volumes:
+      - ../../dataset/dataset_cascades:/data:ro
+      - ../../../cloud_grid/source/dataset_scripts:/scripts:ro
+    cpus: "2.00"
+    mem_limit: 512m
+    deploy:
+      resources:
+        limits:
+          cpus: "2.00"
+          memory: 512M
+        reservations:
+          cpus: "1.00"
+          memory: 256M
+    networks:
+      - grid-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health')"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 40s
+
+networks:
+  grid-net:
+    driver: bridge
