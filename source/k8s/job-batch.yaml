@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: powergrid-batch
+  labels:
+    app: powergrid-batch
+    workload: grid-contingency-calc
+spec:
+  completions: 4
+  parallelism: 2
+  backoffLimit: 3
+  activeDeadlineSeconds: 600
+  template:
+    metadata:
+      labels:
+        app: powergrid-batch
+        workload: grid-contingency-calc
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: powergrid-batch
+          image: my-grid-lab/ieee118-sim:k8s
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DATA_DIR
+              value: /data
+            - name: SCRIPT_DIR
+              value: /scripts
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "250m"
+              memory: "512Mi"
+          command: ["sh", "-c"]
+          args:
+            - |
+              set -eu
+              python app.py --headless --trials 10000 --k 1 --scenario 83810 --seed 42 --workers 1 --shock weighted --unrated-margin 2.0 --threshold 0.05 --out /out/benchmark_k8s.json > /out/run.log
+              cat /out/benchmark_k8s.json
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
