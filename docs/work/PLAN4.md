@@ -499,12 +499,12 @@ kubectl apply -f job-batch.yaml
 ### 6.6. Логи і час
 
 ```powershell
-kubectl logs -l job-name=powergrid-batch > benchmark_k8s.json
+kubectl logs -l job-name=powergrid-batch --tail=-1 > benchmark_k8s.json
 kubectl get pods -l job-name=powergrid-batch -o custom-columns=NAME:.metadata.name,CREATED:.metadata.creationTimestamp,STARTED:.status.containerStatuses[0].state.terminated.startedAt,FINISHED:.status.containerStatuses[0].state.terminated.finishedAt
 kubectl get job powergrid-batch
 ```
 
-`benchmark_k8s.json` — чотири JSON-документи підряд, по одному на completion. Прапорець `--prefix` не додається: він ламає розбір. У таблицю йде `runs[0].time_s` будь-якого документа після звірки лічильників. Холодний старт — різниця `STARTED` і `CREATED` по кожному поду, у README середнє цих чотирьох. `FINISHED − STARTED` — життя процесу разом із читанням `.mat` і графіком; у клітинку «час рахунку» воно не підставляється.
+З селектором `-l` у `kubectl logs` типовий `--tail` дорівнює 10 рядків на под. `--tail=-1` забирає лог цілком. `benchmark_k8s.json` — чотири JSON-документи підряд, по одному на completion. Прапорець `--prefix` не додається: він ламає розбір. У таблицю йде `runs[0].time_s` будь-якого документа після звірки лічильників. Холодний старт — різниця `STARTED` і `CREATED` по кожному поду, у README середнє цих чотирьох. `FINISHED − STARTED` — життя процесу разом із читанням `.mat` і графіком; у клітинку «час рахунку» воно не підставляється.
 
 ### 6.7. Що показати на парі, якщо лишиться час
 
